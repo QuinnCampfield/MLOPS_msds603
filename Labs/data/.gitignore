@@ -1,0 +1,9 @@
+/adult.data
+/adult.test
+/adult.names
+/pipeline.pkl
+/processed_train_data.csv
+/processed_test_data.csv
+/IncomeSurveyDataset.csv
+/pipeline_income.pkl
+/processed_income_data.csv

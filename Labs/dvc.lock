@@ -1,12 +1,8 @@
 schema: '2.0'
 stages:
   prepare:
-    cmd: python create_features_w_params.py
+    cmd: python src/create_features_w_params.py
     deps:
-    - path: create_features_w_params.py
-      hash: md5
-      md5: 4c599dcbee8be853eef6b98ec6607292
-      size: 3469
     - path: data/adult.data
       hash: md5
       md5: 5d7c39d7b8804f071cdd1f2a7c460872
@@ -15,6 +11,10 @@ stages:
       hash: md5
       md5: 366c746021dc50ad9d933d2817612fc9
       size: 2003132
+    - path: src/create_features_w_params.py
+      hash: md5
+      md5: 4c599dcbee8be853eef6b98ec6607292
+      size: 3469
     params:
       params.yaml:
         features.chi2percentile: 50
@@ -33,3 +33,27 @@ stages:
       hash: md5
       md5: adf63b6ce20f7ee74f63d5dabb325226
       size: 10829967
+  prepare_income:
+    cmd: python src/preprocessing.py
+    deps:
+    - path: data/IncomeSurveyDataset.csv
+      hash: md5
+      md5: 23e823109a6beb7a65b8ab7f183b026e
+      size: 10246831
+    - path: src/preprocessing.py
+      hash: md5
+      md5: bcea9da4b858a8f34d4261a9c7af1f92
+      size: 3843
+    params:
+      params.yaml:
+        features.chi2percentile: 50
+        features.income_path: data/IncomeSurveyDataset.csv
+    outs:
+    - path: data/pipeline_income.pkl
+      hash: md5
+      md5: b77f2493d732af392b0cdeb97158bc05
+      size: 3805
+    - path: data/processed_income_data.csv
+      hash: md5
+      md5: b2322a47a2185d05880e2ae695cc2761
+      size: 29123632
