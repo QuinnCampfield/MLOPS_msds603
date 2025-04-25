@@ -1,0 +1,6 @@
+{
+  "METAFLOW_DATASTORE_SYSROOT": "/tmp/metaflow",
+  "METAFLOW_DEFAULT_DATASTORE": "local",
+  "METAFLOW_DEFAULT_METADATA": "local",
+  "METAFLOW_SERVICE_URL": "http://127.0.0.1:8080/"
+} 
