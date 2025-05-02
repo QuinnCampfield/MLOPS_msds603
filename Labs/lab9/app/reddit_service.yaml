@@ -1,0 +1,14 @@
+# reddit_service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: reddit-fastapi-service # Name of the Service object
+spec:
+  selector:
+    app: reddit-fastapi  # Routes traffic to Pods with this label (must match Pod labels)
+  ports:
+    - protocol: TCP
+      port: 80           # Port the Service will be available on *within* the cluster
+      targetPort: 8000   # Port on the Pods (containerPort from Deployment) to forward traffic to
+  type: LoadBalancer     # Exposes the service externally using Minikube's load balancer.
+                         # Alternatively, use NodePort for a different exposure method.

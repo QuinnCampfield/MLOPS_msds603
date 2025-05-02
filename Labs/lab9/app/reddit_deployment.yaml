@@ -1,0 +1,23 @@
+# reddit_deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reddit-fastapi-deployment # Name of the Deployment object
+  labels:
+    app: reddit-fastapi         # Label for grouping related objects
+spec:
+  replicas: 1 # Start with one instance (Pod) of your application
+  selector:
+    matchLabels:
+      app: reddit-fastapi # This deployment manages Pods with this label
+  template: # Blueprint for the Pods this deployment will create
+    metadata:
+      labels:
+        app: reddit-fastapi # Label applied to the Pods
+    spec:
+      containers:
+      - name: reddit-fastapi-container # Name of the container within the Pod
+        image: us-west1-docker.pkg.dev/lab7-457601/reddit-repo/reddit-fastapi:latest  # The Docker image to use. Must match the image built in Minikube.
+        imagePullPolicy: Always # IMPORTANT: Use 'Never' or 'IfNotPresent' for images built locally within Minikube's Docker daemon
+        ports:
+        - containerPort: 8000 # The port your FastAPI app listens on *inside* the container (uvicorn default)
